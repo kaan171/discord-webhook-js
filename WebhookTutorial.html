@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+    function discordWebhook(){
+        const request = new XMLHttpRequest();
+     
+      request.open("POST", "https://discord.com/api/webhooks/938449936243101758/rcWCZi6n-9m-vVthHipXcPJNDSm4jbrM2k5utt3hWif0ihFrkBTaFpU5wLaEeSmOablh"); // <-- Discord webhook link 
+      
+      request.setRequestHeader('Content-type', 'application/json');
+
+      $content = document.getElementById("content").value; //take the value of the input box
+
+      	//lets have an parameter to send to the discord webhook .
+      const params = {
+        username: "", 
+        //username (if not set it is default what you set in discord)
+        avatar_url: "",
+         //avatar url (if not set it is default what you set in discord)
+        content: "This is a test webhook ! " + $content 
+        //the content to sent or the message. This is required to send a webhook othervise it won't send the webhook.
+      }
+      request.send(JSON.stringify(params));//send the params variable to discord webhook.
+    }
+</script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Discord Webhook Js Tutorial</title>
+</head>
+<body>
+<h1>Webhook Tutorial - Yaşar Kaan Can</h1>
+	<form action="javascript:discordWebhook()"><!-- when form is completed action javascript:discordWebhook() will run. -->
+		<input type="text" name="content" placeholder="Message" id="content">
+		<button type="submit">Send The Webhook</button>
+	</form>
+</body>
+</html>
